@@ -14,7 +14,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    let data = JSON.parse(fs.readFileSync("./data/Courses__202311221945.json", "utf-8")).map(el =>{
+    let data = JSON.parse(fs.readFileSync("./data/courses.json", "utf-8")).map(el =>{
       delete el.id
       el.createdAt = el.updatedAt = new Date()
       return el

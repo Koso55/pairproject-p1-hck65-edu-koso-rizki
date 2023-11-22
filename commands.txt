@@ -25,6 +25,8 @@ npx sequelize seed:generate --name seedUserProfile
 
 npx sequelize seed:generate --name seedCourseDetail
 
+npx sequelize seed:generate --name seedUserHasCourse
+
 
 npx sequelize db:migrate                        Run pending migrations
 npx sequelize db:migrate:schema:timestamps:add  Update migration table to have timestamps

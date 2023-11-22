@@ -1,0 +1,20 @@
+[
+	{
+		"id" : 1,
+		"userName" : "kosokoso",
+		"password" : "123123",
+		"email" : "koso@mail.com",
+		"role" : "user",
+		"createdAt" : "2023-11-22T13:05:46.195Z",
+		"updatedAt" : "2023-11-22T13:05:46.195Z"
+	},
+	{
+		"id" : 2,
+		"userName" : "scaryAdmin",
+		"password" : "123123",
+		"email" : "admin@mail.com",
+		"role" : "admin",
+		"createdAt" : "2023-11-22T13:05:46.195Z",
+		"updatedAt" : "2023-11-22T13:05:46.195Z"
+	}
+]
