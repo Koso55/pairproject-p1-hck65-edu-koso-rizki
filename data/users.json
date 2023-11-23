@@ -3,49 +3,49 @@
 		"id": 1,
 		"email": "koso@mail.com",
 		"userName": "kosokoso",
-		"password": "123123",
+		"password": "$2a$10$F06/1ucGtA5wM1OFxPurJOGxH2Ub.lr3pk8CEgdDpHER9iCmNOiwa",
 		"role": "user"
 	},
 	{
 		"id": 2,
 		"email": "carsonlane@adornica.com",
-		"userName": "Camille Orr",
-		"password": "admin",
+		"userName": "adm",
+		"password": "$2a$10$3ozc6m66blQB2Z6PlJI0RemTuB01I205hwsKwI6a9F6P38J5C2k4u",
 		"role": "admin"
 	},
 	{
 		"id": 3,
 		"email": "osbornterrell@adornica.com",
 		"userName": "Long Ortega",
-		"password": "user",
+		"password": "$2a$10$F06/1ucGtA5wM1OFxPurJOGxH2Ub.lr3pk8CEgdDpHER9iCmNOiwa",
 		"role": "user"
 	},
 	{
 		"id": 4,
 		"email": "longortega@adornica.com",
 		"userName": "Kirkland Griffin",
-		"password": "user",
+		"password": "$2a$10$F06/1ucGtA5wM1OFxPurJOGxH2Ub.lr3pk8CEgdDpHER9iCmNOiwa",
 		"role": "user"
 	},
 	{
 		"id": 5,
 		"email": "kirklandgriffin@adornica.com",
 		"userName": "Ann Rasmussen",
-		"password": "user",
+		"password": "$2a$10$F06/1ucGtA5wM1OFxPurJOGxH2Ub.lr3pk8CEgdDpHER9iCmNOiwa",
 		"role": "user"
 	},
 	{
 		"id": 6,
 		"email": "annrasmussen@adornica.com",
 		"userName": "Carson Lane",
-		"password": "user",
+		"password": "$2a$10$F06/1ucGtA5wM1OFxPurJOGxH2Ub.lr3pk8CEgdDpHER9iCmNOiwa",
 		"role": "user"
 	},
 	{
 		"id": 7,
 		"email": "dukecontreras@adornica.com",
 		"userName": "Osborn Terrell",
-		"password": "user",
+		"password": "$2a$10$F06/1ucGtA5wM1OFxPurJOGxH2Ub.lr3pk8CEgdDpHER9iCmNOiwa",
 		"role": "user"
 	}
 ]

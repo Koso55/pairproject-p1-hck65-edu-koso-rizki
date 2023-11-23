@@ -264,7 +264,7 @@ class Controller {
             res.render("addCourseDetail", { data: data })
             //res.send(data)
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             res.send(error)
         }
     }
@@ -277,7 +277,7 @@ class Controller {
             let data = await CourseDetail.create({
                 name, linkCourse, CourseId: courseId
             })
-            console.log(data);
+            // console.log(data);
             res.redirect(`/admin/course/${courseId}`)
         } catch (error) {
             console.log(error);
@@ -345,9 +345,26 @@ class Controller {
             res.send(error)
         }
     }
+    static async showCourseDetailUser(req,res){
+        try {
+            let userId = req.session.userId
+            let courseId = req.params.courseId
+            // console.log(courseId)
+            let instance = await CourseDetail.showCourseDetails(+courseId)
+            // res.send(instance)
+            res.render("courseDetailUser",{instance, userId, courseId})
+        } catch (error) {
+            res.send(error)
+        }
+    }
 
-
-
+    static async seeViewer(req,res){
+        try {
+            res.render("pdfViewer")
+        } catch (error) {
+            res.send(error)
+        }
+    }
 
     static async showUserProfile(req, res) {
         try {

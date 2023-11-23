@@ -1,37 +1,42 @@
 [
-	{
-		"name": "Front-End",
-		"linkCourse": "Coming Soon",
-		"CourseId": 1
-	},
-	{
-		"name": "Back-End",
-		"linkCourse": "Coming Soon",
-		"CourseId": 1
-	},
-	{
-		"name": "Database Javascript Postgres",
-		"linkCourse": "Coming Soon",
-		"CourseId": 1
-	},
-	{
-		"name": "Golang-Back-End",
-		"linkCourse": "Coming Soon",
-		"CourseId": 2
-	},
-	{
-		"name": "Golang Database SQL",
-		"linkCourse": "Coming Soon",
-		"CourseId": 2
-	},
-	{
-		"name": "Digital Marketing Website",
-		"linkCourse": "Coming Soon",
-		"CourseId": 3
-	},
-	{
-		"name": "Desain Graphics Marketing",
-		"linkCourse": "Coming Soon",
-		"CourseId": 3
-	}
+    {
+        "name":"Pengantar JavaScript",
+        "linkCourse": "https://smkn1sukorejo.sch.id/wp-content/uploads/2019/08/Modul-Javascript.pdf",
+        "CourseId": 1
+    },
+    {
+        "name":"Front End dan Back-End Bagian 1",
+        "linkCourse":"https://rahmatfauzi.com/wp-content/uploads/2019/12/W3-JavaScript.pdf",
+        "CourseId":1
+    },
+    {
+        "name":"Front End dan Back-End Bagian 2",
+        "linkCourse":"https://repository.unikom.ac.id/46889/1/Modul%20Lengkap%20Javascript.pdf",
+        "CourseId":1
+    },
+    {
+        "name": "An Introduction To Programming In Go",
+        "linkCourse":"https://www.golang-book.com/public/pdf/gobook.pdf",
+        "CourseId":2
+    },
+    {
+        "name":"The Little Go Book ",
+        "linkCourse":"https://www.openmymind.net/assets/go/go.pdf",
+        "CourseId":2
+    },
+    {
+        "name":"The Little Go Book ",
+        "linkCourse":"https://elinux.org/images/7/73/Golang_intro.pdf",
+        "CourseId":2
+    },
+    {
+        "name":"Pengantar Digital Marketing",
+        "linkCourse":"http://repository.ibik.ac.id/1470/1/DIGITAL%20MARKETING.pdf",
+        "CourseId":3
+    },
+    {
+        "name":"Strategi Digital Marketing",
+        "linkCourse":"https://repository.um.ac.id/1150/1/fullteks.pdf",
+        "CourseId":3
+    }
 ]

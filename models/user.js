@@ -56,6 +56,11 @@ module.exports = (sequelize, DataTypes) => {
             sesStat.userId = findUser.id
             sesStat.role = findUser.role
             return { findUser, validator: true }
+          } else {
+            throw {
+              type: "failedLogin",
+              message: "Invalid username or password"
+            }
           }
         } else {
           throw {
@@ -105,7 +110,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-    static async findUserProfile(userId, UserProfile){
+    static async findUserProfile(userId, UserProfile) {
       try {
         let instance = await User.findOne({
           where: { id: userId },

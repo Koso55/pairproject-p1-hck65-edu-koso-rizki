@@ -11,9 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      CourseDetail.belongsTo(models.Course, {foreignKey: "CourseId"})
-
+      CourseDetail.belongsTo(models.Course, { foreignKey: "CourseId" })
     }
+    static async showCourseDetails(courseId) {
+      try {
+        let instance = CourseDetail.findAll({
+          where: { CourseId: courseId }
+        })
+        return instance
+      } catch (error) {
+        throw error
+      }
+    }
+
+
+
   }
   CourseDetail.init({
     name: DataTypes.STRING,
