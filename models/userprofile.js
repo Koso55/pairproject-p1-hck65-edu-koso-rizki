@@ -1,4 +1,6 @@
 'use strict';
+
+const timeSince = require("../helper/helper.js")
 const {
   Model
 } = require('sequelize');
@@ -9,6 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    get yearBorn(){
+      let thisYear = new Date().getFullYear()
+      let yearBorn = thisYear - this.age
+      return yearBorn
+    }
+
+    get dateJoined(){
+      let since = timeSince(this.createdAt)
+      return since
+    }
+
+
     static associate(models) {
       // define association here
       UserProfile.belongsTo(models.User, { foreignKey: "UserId" })
@@ -23,8 +37,9 @@ module.exports = (sequelize, DataTypes) => {
       } catch (error) {
         throw error
       }
-
     }
+
+
   }
   UserProfile.init({
     parentName: {

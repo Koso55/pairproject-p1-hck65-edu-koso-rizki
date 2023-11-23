@@ -10,11 +10,7 @@ user.get('/:id/course/mycourse', Controller.showMyCourse)
 
 
 /*
-GET	    /user/:id/course
-POST	/user/:id/course/:courseId/enroll
-GET	    /user/:id/course/mycourse
 GET	    /user/:id/course/mycourse/:courseId
-GET	    /user/:id/profile
 */
 
 
