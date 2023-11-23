@@ -1,5 +1,6 @@
 'use strict';
 var bcrypt = require('bcryptjs');
+const { Op } = require("sequelize");
 const {
   Model
 } = require('sequelize');
@@ -25,15 +26,53 @@ module.exports = (sequelize, DataTypes) => {
             message: "password do not match"
           }
         }
-        await User.create({ userName: userName, password: password, email: email })
+        return await User.create({ userName: userName, password: password, email: email })
       } catch (error) {
         throw error
       }
-
     }
-
-
-
+    static async findUserbyId(newUser) {
+      try {
+        const newUserId = newUser.id
+        // console.log(newUserId)
+        let userId = await User.findOne({
+          where: {
+            id: newUserId
+          }
+        })
+        console.log(userId.id)
+        return userId.id
+      } catch (error) {
+        throw error
+      }
+    }
+    static async loginFormPost(data) {
+      try {
+        const { userName, password, email } = data
+        let findUser = await User.findOne({ where: { userName } })
+        // console.log("findUser"," FIND USER MODEL")
+        if (findUser) {
+          const isValidPassword = bcrypt.compareSync(password, findUser.password)
+          // console.log("isValidPassword", "ISVALIDPASSWORD MODEL")
+          const isValidEmail = bcrypt.compareSync(email, findUser.email)
+          if (isValidPassword && isValidEmail) {
+            return { findUser, validator: true }
+          } else {
+            throw {
+              type: "failedLogin",
+              message: "Invalid username or email"
+            }
+          }
+        } else {
+          throw {
+            type: "failedLogin",
+            message: "Invalid username or password"
+          }
+        }
+      } catch (error) {
+        throw error
+      }
+    }
 
 
   }
@@ -45,8 +84,8 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: "username is required"
         },
-        notEmpty:{
-          msg:"username is required"
+        notEmpty: {
+          msg: "username is required"
         }
       }
     },
@@ -57,8 +96,8 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: "password is required"
         },
-        notEmpty:{
-          msg:"password is required"
+        notEmpty: {
+          msg: "password is required"
         }
       }
     },
@@ -69,8 +108,8 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: "email is required"
         },
-        notEmpty:{
-          msg:"email is required"
+        notEmpty: {
+          msg: "email is required"
         }
       }
     },
