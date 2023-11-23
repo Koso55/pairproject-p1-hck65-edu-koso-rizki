@@ -7,12 +7,28 @@ const router = express.Router()
 
 
 router.get('/', Controller.showLandingPage)
-router.get('/login', Controller.loginForm)
-router.post('/login', Controller.loginFormPost)
 router.get('/register', Controller.registerForm)
 router.post('/register', Controller.registerPost)
-router.use('/admin', admin)
+router.get('/login', Controller.loginForm)
+router.post('/login', Controller.loginFormPost)
+
+
+router.use((req, res, next) => {
+    // console.log(req.session, "SESSION IS LOGGED IN INDEX ROUTERS")
+    if(!req.session.userId){
+        const errorMsg = "Please login first!"
+        res.redirect(`/login?err=${errorMsg}`)
+    } else {
+        next()
+    }
+})
+router.get('/logout', Controller.getLogout)
+
+
 router.use('/user', user)
+
+router.use('/admin', admin)
+
 
 
 

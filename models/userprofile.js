@@ -15,10 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static async registerPost(data, userId) {
-      // console.log(data)
-      const { parentName, benefactor, phone, idCardNumber } = data
-      let userProfile = await UserProfile.create({ parentName: parentName, benefactor: benefactor, phone: phone, idCardNumber: idCardNumber, UserId: userId })
-      return userProfile
+      try {
+        // console.log(data, "USER PROFILES")
+        const { parentName, benefactor, age, gender, phone, idCardNumber } = data
+        let userProfile = await UserProfile.create({ parentName: parentName, benefactor: benefactor, phone: phone, idCardNumber: idCardNumber, age: age, gender: gender, UserId: userId })
+        return userProfile
+      } catch (error) {
+        throw error
+      }
+
     }
   }
   UserProfile.init({
@@ -59,6 +64,31 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "age is required"
+        },
+        notEmpty: {
+          msg: "age name required"
+        }
+      }
+    },
+    gender: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "gender is required"
+        },
+        notEmpty: {
+          msg: "gender name required"
+        }
+      }
+    },
+    
     UserId: DataTypes.INTEGER //from instances
   }, {
     hooks: {

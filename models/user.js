@@ -46,22 +46,16 @@ module.exports = (sequelize, DataTypes) => {
         throw error
       }
     }
-    static async loginFormPost(data) {
+    static async loginFormPost(data, sesStat) {
       try {
         const { userName, password, email } = data
         let findUser = await User.findOne({ where: { userName } })
-        // console.log("findUser"," FIND USER MODEL")
         if (findUser) {
           const isValidPassword = bcrypt.compareSync(password, findUser.password)
-          // console.log("isValidPassword", "ISVALIDPASSWORD MODEL")
-          const isValidEmail = bcrypt.compareSync(email, findUser.email)
-          if (isValidPassword || isValidEmail) { //kenapa kalo && gagal???
+          if (isValidPassword) {
+            sesStat.userId = findUser.id
+            sesStat.role = findUser.role
             return { findUser, validator: true }
-          } else {
-            throw {
-              type: "failedLogin",
-              message: "Invalid username or email"
-            }
           }
         } else {
           throw {

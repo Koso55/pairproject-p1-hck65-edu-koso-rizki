@@ -26,7 +26,7 @@
             <h2 class="text-center mb-4">Login</h2>
             <% errorMsg.forEach(el => { %>
                 <ul>
-                    <li>
+                    <li style="color: red;">
                         <%= el %>
                     </li>
                 </ul>
@@ -35,10 +35,6 @@
                 <div class="form-group">
                     <label for="userName">Username</label>
                     <input type="text" class="form-control" id="userName" name="userName">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>

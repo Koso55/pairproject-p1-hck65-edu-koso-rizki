@@ -27,16 +27,19 @@ class Controller {
     static async loginFormPost(req, res) {
         try {
             let data = req.body
-            let findUser = await User.loginFormPost(data)
-            console.log("findUser", "CONTROLLER")
+            let sesStat = req.session
+            let findUser = await User.loginFormPost(data, sesStat)
+            // console.log(findUser.findUser.role, "CONTROLLER")
+            // console.log(sesStat, "CONTROLLER")
+
             if (findUser.validator === true) {
                 if (findUser.findUser.role === "user") {
                     return res.redirect(`/user/${findUser.findUser.id}/course`)
                 } else if (findUser.findUser.role === "admin") {
-                    console.log("MASUK VALID ADMIN", "CONTROLLEaaaaaR")
+                    // console.log("MASUK VALID ADMIN", "CONTROLLEaaaaaR")
                     return res.redirect(`/admin`)
                 } else {
-                    console.log("MASUK ERROR", "CONTROLLER")
+                    // console.log("MASUK ERROR", "CONTROLLER")
                     throw {
                         type: "failedLogin",
                         message: "role is not found"
@@ -70,7 +73,8 @@ class Controller {
             } else {
                 errorMsg = []
             }
-            res.render("registerForm", { errorMsg })
+            let gender = ["male", "female"]
+            res.render("registerForm", { errorMsg, gender })
         } catch (error) {
             res.send(error)
         }
@@ -78,8 +82,9 @@ class Controller {
     static async registerPost(req, res) {
         try {
             const data = req.body
-            const { userName, password, confirmPassword, email, parentName, benefactor, phone, idCardNumber } = data
-            if (userName === "" || password === "" || confirmPassword === "" || email === "" || parentName === "" || phone === "" || idCardNumber === "") {
+            // console.log(data, "REQ BODY CONTROLLER")
+            const { userName, password, confirmPassword, email, parentName, benefactor, phone, idCardNumber, age, gender } = data
+            if (userName === "" || password === "" || confirmPassword === "" || email === "" || parentName === "" || phone === "" || idCardNumber === "" || age === "" || gender === "") {
                 throw {
                     type: "fieldError",
                     message: "all fields except benefactor must be filled"
@@ -105,10 +110,25 @@ class Controller {
                 })
                 res.redirect(`/register?err=${errorMsgSeq}`)
             } else {
+                // console.log(error)
                 res.send(error)
             }
         }
     }
+    static getLogout(req, res) {//PENTING
+        try {
+            req.session.destroy(function (err) {
+                if(err){
+                    console.log(err)
+                }else {
+                    res.redirect("/")
+                }
+            })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
 
     //ADMIN
     static async showAdminPage(req, res) {

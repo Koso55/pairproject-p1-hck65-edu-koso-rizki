@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'black alleyway',
   resave: false,
   saveUninitialized: true,
   cookie: {

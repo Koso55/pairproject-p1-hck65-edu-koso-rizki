@@ -47,6 +47,19 @@
                     <input type="text" class="form-control" id="benefactor" name="benefactor" placeholder="dont have a benefactor? you can leave it empty" >
                 </div>
                 <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="benefactor" name="age">
+                </div>
+                <div class="form-group">
+                    <label for="gender">gender</label>
+                    <select class="form-select" aria-label="Default select example" name="gender">
+                        <option disabled selected>Open this select menu</option>
+                        <% gender.forEach(el => { %>
+                            <option value="<%= el %>"><%= el %></option>
+                        <%}); %>
+                      </select>
+                </div>
+                <div class="form-group">
                     <label for="phone">Phone Number</label>
                     <input type="text" class="form-control" id="phone" name="phone" >
                 </div>
