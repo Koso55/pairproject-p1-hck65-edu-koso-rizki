@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-
 	* {
 		padding: 0;
 		margin: 0;
@@ -19,14 +17,9 @@
 		outline: none;
 	}
 
-	body {
-		font-family: 'Lato', sans-serif;
-		background-color: #171717;
-	}
-
 	main {
 		width: 100%;
-		min-height: 90vh;
+		min-height: 70vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -113,12 +106,40 @@
 		font-weight: 700;
 		color: #eee;
 	}
+
+	.container {
+		display: flex;
+		height: 100vh;
+	}
+
+	.pdf-list {
+		overflow-y: auto;
+		padding: 20px;
+	}
+
+	.pdf-viewer-section {
+		position: relative;
+	}
+
+	.pdf-viewer-section main {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.pdf-viewer-section footer {
+		position: relative;
+		bottom: 0;
+	}
 </style>
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../CSS/style.css" type="text/css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
 		integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -129,126 +150,148 @@
 </head>
 
 <body>
-	<main>
-		<h3>Open a PDF file</h3>
-		<canvas class="pdf-viewer hidden">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<section class="pdf-list">
+					<div class="card">
+						<% instance.forEach(el=> {%>
+							<h4>
+								<%= el.name %>
+							</h4>
+							<a href="<%= el.linkCourse %>">Download</a>
+							<%}); %>
+					</div>
+				</section>
+			</div>
+			<div class="col-md-6">
+				<section class="pdf-viewer-section">
+					<main>
+						<h3>Open a PDF file</h3>
+						<canvas class="pdf-viewer hidden">
 
-		</canvas>
-	</main>
-	<footer>
-		<ul>
-			<li>
-				<button id="openPDF">
-					<span>Open</span> <i class="fas fa-folder-open"></i>
-				</button>
-				<input type="file" id="inputFile" hidden>
-			</li>
-			<li class="pagination">
-				<button id="previous"><i class="fas fa-arrow-alt-circle-left"></i></button>
-				<span id="current_page">0 of 0</span>
-				<button id="next"><i class="fas fa-arrow-alt-circle-right"></i></button>
-			</li>
+						</canvas>
+					</main>
+					<footer>
+						<ul>
+							<li>
+								<button id="openPDF">
+									<span>Open</span> <i class="fas fa-folder-open"></i>
+								</button>
+								<input type="file" id="inputFile" hidden>
+							</li>
+							<li class="pagination">
+								<button id="previous"><i class="fas fa-arrow-alt-circle-left"></i></button>
+								<span id="current_page">0 of 0</span>
+								<button id="next"><i class="fas fa-arrow-alt-circle-right"></i></button>
+							</li>
 
-			<li>
-				<span id="zoomValue">150%</span>
-				<input type="range" id="zoom" name="cowbell" min="100" max="300" value="150" step="50" disabled>
-			</li>
-		</ul>
-	</footer>
-	<script type="text/javascript" src="../JS/index.js"></script>
+							<li>
+								<input type="range" id="zoom" name="cowbell" min="100" max="300" value="100" step="50"
+									disabled>
+							</li>
+						</ul>
+					</footer>
+				</section>
+			</div>
+		</div>
+	</div>
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+	crossorigin="anonymous"></script>
 
 <script>
-const zoomButton = document.getElementById('zoom');
-const input = document.getElementById('inputFile');
-const openFile = document.getElementById('openPDF');
-const currentPage = document.getElementById('current_page');
-const viewer = document.querySelector('.pdf-viewer');
-let currentPDF = {}
+	const zoomButton = document.getElementById('zoom');
+	const input = document.getElementById('inputFile');
+	const openFile = document.getElementById('openPDF');
+	const currentPage = document.getElementById('current_page');
+	const viewer = document.querySelector('.pdf-viewer');
+	let currentPDF = {}
 
-function resetCurrentPDF() {
-	currentPDF = {
-		file: null,
-		countOfPages: 0,
-		currentPage: 1,
-		zoom: 1.5
-	}
-}
-
-
-openFile.addEventListener('click', () => {
-	input.click();
-});
-
-input.addEventListener('change', event => {
-	const inputFile = event.target.files[0];
-	if (inputFile.type == 'application/pdf') {
-		const reader = new FileReader();
-		reader.readAsDataURL(inputFile);
-		reader.onload = () => {
-			loadPDF(reader.result);
-			zoomButton.disabled = false;
+	function resetCurrentPDF() {
+		currentPDF = {
+			file: null,
+			countOfPages: 0,
+			currentPage: 1,
+			zoom: 1
 		}
 	}
-	else {
-		alert("The file you are trying to open is not a pdf file!")
-	}
-});
 
 
-zoomButton.addEventListener('input', () => {
-	if (currentPDF.file) {
-		document.getElementById('zoomValue').innerHTML = zoomButton.value + "%";
-		currentPDF.zoom = parseInt(zoomButton.value) / 100;
-		renderCurrentPage();
-	}
-});
-
-document.getElementById('next').addEventListener('click', () => {
-	const isValidPage = currentPDF.currentPage < currentPDF.countOfPages;
-	if (isValidPage) {
-		currentPDF.currentPage += 1;
-		renderCurrentPage();
-	}
-});
-
-document.getElementById('previous').addEventListener('click', () => {
-	const isValidPage = currentPDF.currentPage - 1 > 0;
-	if (isValidPage) {
-		currentPDF.currentPage -= 1;
-		renderCurrentPage();
-	}
-});
-
-function loadPDF(data) {
-	const pdfFile = pdfjsLib.getDocument(data);
-	resetCurrentPDF();
-	pdfFile.promise.then((doc) => {
-		currentPDF.file = doc;
-		currentPDF.countOfPages = doc.numPages;
-		viewer.classList.remove('hidden');
-		document.querySelector('main h3').classList.add("hidden");
-		renderCurrentPage();
+	openFile.addEventListener('click', () => {
+		input.click();
 	});
 
-}
-
-function renderCurrentPage() {
-	currentPDF.file.getPage(currentPDF.currentPage).then((page) => {
-		var context = viewer.getContext('2d');
-		var viewport = page.getViewport({ scale: currentPDF.zoom, });
-		viewer.height = viewport.height;
-		viewer.width = viewport.width;
-
-		var renderContext = {
-			canvasContext: context,
-			viewport: viewport
-		};
-		page.render(renderContext);
+	input.addEventListener('change', event => {
+		const inputFile = event.target.files[0];
+		if (inputFile.type == 'application/pdf') {
+			const reader = new FileReader();
+			reader.readAsDataURL(inputFile);
+			reader.onload = () => {
+				loadPDF(reader.result);
+				zoomButton.disabled = false;
+			}
+		}
+		else {
+			alert("The file you are trying to open is not a pdf file!")
+		}
 	});
-	currentPage.innerHTML = currentPDF.currentPage + ' of ' + currentPDF.countOfPages;
-}
+
+
+	zoomButton.addEventListener('input', () => {
+		if (currentPDF.file) {
+			document.getElementById('zoomValue').innerHTML = zoomButton.value + "%";
+			currentPDF.zoom = parseInt(zoomButton.value) / 100;
+			renderCurrentPage();
+		}
+	});
+
+	document.getElementById('next').addEventListener('click', () => {
+		const isValidPage = currentPDF.currentPage < currentPDF.countOfPages;
+		if (isValidPage) {
+			currentPDF.currentPage += 1;
+			renderCurrentPage();
+		}
+	});
+
+	document.getElementById('previous').addEventListener('click', () => {
+		const isValidPage = currentPDF.currentPage - 1 > 0;
+		if (isValidPage) {
+			currentPDF.currentPage -= 1;
+			renderCurrentPage();
+		}
+	});
+
+	function loadPDF(data) {
+		const pdfFile = pdfjsLib.getDocument(data);
+		resetCurrentPDF();
+		pdfFile.promise.then((doc) => {
+			currentPDF.file = doc;
+			currentPDF.countOfPages = doc.numPages;
+			viewer.classList.remove('hidden');
+			document.querySelector('main h3').classList.add("hidden");
+			renderCurrentPage();
+		});
+
+	}
+
+	function renderCurrentPage() {
+		currentPDF.file.getPage(currentPDF.currentPage).then((page) => {
+			var context = viewer.getContext('2d');
+			var viewport = page.getViewport({ scale: currentPDF.zoom, });
+			viewer.height = viewport.height;
+			viewer.width = viewport.width;
+
+			var renderContext = {
+				canvasContext: context,
+				viewport: viewport
+			};
+			page.render(renderContext);
+		});
+		currentPage.innerHTML = currentPDF.currentPage + ' of ' + currentPDF.countOfPages;
+	}
 </script>
 
 </html>

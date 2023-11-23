@@ -360,7 +360,10 @@ class Controller {
 
     static async seeViewer(req,res){
         try {
-            res.render("pdfViewer")
+            let userId = req.session.userId
+            let courseId = req.params.courseId
+            let instance = await CourseDetail.showCourseDetails(+courseId)
+            res.render("pdfViewer",{instance})
         } catch (error) {
             res.send(error)
         }

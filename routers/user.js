@@ -8,7 +8,7 @@ user.get('/:id/profile', Controller.showUserProfile)
 user.post('/:id/course/:courseId/enroll', Controller.enrollCourseUser)
 user.get('/:id/course/mycourse', Controller.showMyCourse)
 user.get('/:id/course/mycourse/:courseId', Controller.showCourseDetailUser)
-user.get('/:id/viewer', Controller.seeViewer)
+user.get('/:id/course/mycourse/:courseId/viewer', Controller.seeViewer)
 
 
 module.exports = user
