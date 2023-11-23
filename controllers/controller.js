@@ -109,7 +109,7 @@ class Controller {
             }
         }
     }
-
+    
     //ADMIN
     static async showAdminPage(req, res) {
         try {

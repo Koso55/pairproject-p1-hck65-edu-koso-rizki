@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
           const isValidPassword = bcrypt.compareSync(password, findUser.password)
           // console.log("isValidPassword", "ISVALIDPASSWORD MODEL")
           const isValidEmail = bcrypt.compareSync(email, findUser.email)
-          if (isValidPassword && isValidEmail) {
+          if (isValidPassword || isValidEmail) { //kenapa kalo dan gagal???
             return { findUser, validator: true }
           } else {
             throw {
