@@ -52,14 +52,56 @@ class Controller {
             }
         }
     }
+
+
     //ADMIN
     static async showAdminPage(req, res) {
         try {
-
+            res.render("ShowAdminPage")
         } catch (error) {
             res.send(error)
         }
     }
+    static async showAdminCourse(req, res) {
+        try {
+            let data = await Course.findAll()
+            //res.send(data)
+            // res.send("wkwkkw")
+            res.render("ShowAdminCourse", { data })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    static async addAdminCourse(req, res) {
+        try {
+            let data = await Course.findAll()
+            res.render("addAdminCourse", { data })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    static async editAdminCourse(req, res) {
+        try {
+            const { name, description } = req.body
+            let data = await Course.create({
+                name,
+                description
+            })
+            res.redirect('/course')
+        } catch (error) {
+            res.send(error)
+        }
+
+    }
+    static async deleteAdminCourse(req, res) {
+        try {
+
+        } catch (error) {
+
+        }
+    }
+
+
 
     //USER
     static async redirToUserCourse(req, res) {

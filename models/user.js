@@ -29,14 +29,16 @@ module.exports = (sequelize, DataTypes) => {
       } catch (error) {
         throw error
       }
-
     }
 
-
-
-
-
+    
   }
+
+
+
+
+
+
   User.init({
     userName: {
       type: DataTypes.STRING,
@@ -84,7 +86,6 @@ module.exports = (sequelize, DataTypes) => {
 
         instance.role = "user"
       }
-
     },
     sequelize,
     modelName: 'User',

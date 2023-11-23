@@ -11,6 +11,7 @@ module.exports = {
      */
     await queryInterface.addColumn("UserProfiles", "UserId", {
       type: Sequelize.DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "Users",
         key: "id"

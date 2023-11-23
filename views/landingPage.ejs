@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Belajar Apa - Learning Platform</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
     <style>
         /* Custom Dark Mode Styles */
         .header-bg {
@@ -26,19 +28,41 @@
             border-radius: 8px;
         }
     </style>
+
 </head>
 
 <body>
 
+    <!--? BUTTON  -->
+    <button id="theme-toggle" type="button"
+        class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd" clip-rule="evenodd"></path>
+        </svg>
+    </button>
+
+    <!--? LOGIN ADMIN  -->
+    <h3>Klik disini untuk admin</h3><a href="/admin" class="btn btn-primary">Admin</a>
+
+    <!--? HEADER  -->
     <div class="container-fluid header-bg">
         <div class="container">
             <h1>Welcome to Belajar Apa</h1>
             <p class="lead">Your Gateway to Learning</p>
-            <p>At Belajar Apa, we're dedicated to making education engaging and accessible for all. Join us to explore a
+            <p>At Belajar Apa, we're dedicated to making education engaging and accessible for all. Join us to
+                explore a
                 diverse array of projects and ignite your passion for learning.</p>
             <a href="/login" class="btn btn-primary">Get Started</a>
         </div>
     </div>
+
 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Why Choose Belajar Apa?</h2>
@@ -56,7 +80,8 @@
                 <div class="text-center feature-card">
                     <i class="fas fa-users feature-icon"></i>
                     <h4>Learn anytime, anywhere</h4>
-                    <p>Belajar Apa is accessible anytime and anywhere, so you can choose when or where to learn on your
+                    <p>Belajar Apa is accessible anytime and anywhere, so you can choose when or where to learn on
+                        your
                         terms</p>
                 </div>
             </div>
@@ -64,7 +89,8 @@
                 <div class="text-center feature-card">
                     <i class="fas fa-chalkboard-teacher feature-icon"></i>
                     <h4>Conclusion</h4>
-                    <p>Belajar Apa is your passport to a world of experiential learning. Dive into projects that excite
+                    <p>Belajar Apa is your passport to a world of experiential learning. Dive into projects that
+                        excite
                         you, explore your interests, and expand your horizons in an inclusive and accessible
                         environment. Uncover the joy of learning by doing with Belajar Apa today!</p>
                 </div>
@@ -74,7 +100,10 @@
     </div>
 
     <!-- Bootstrap JS, jQuery, Popper.js, Font Awesome -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
 </body>
 
 </html>

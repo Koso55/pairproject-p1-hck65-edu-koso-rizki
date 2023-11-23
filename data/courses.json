@@ -1,16 +1,17 @@
 [
-	{
-		"id" : 1,
-		"name" : "Simple Programming",
-		"description" : "simple programming guides to make some simple apps",
-		"createdAt" : "2023-11-22T13:05:46.206Z",
-		"updatedAt" : "2023-11-22T13:05:46.206Z"
-	},
-	{
-		"id" : 2,
-		"name" : "Cooking for Beginner",
-		"description" : "beginner friendly on cooking some simple dishes",
-		"createdAt" : "2023-11-22T14:24:03.814Z",
-		"updatedAt" : "2023-11-22T14:24:03.814Z"
-	}
+    {
+        "id": 1,
+        "name": "Javascript",
+        "description":"Membangun website dengan Javascript"
+    },
+    {
+        "id":2,
+        "name":"Golang",
+        "description":"Back-end dengan Golang"
+    },
+    {
+        "id":3,
+        "name":"Digital Marketing",
+        "description":"Kelola Bisnis dengan memaksimalkan teknologi"
+    }
 ]

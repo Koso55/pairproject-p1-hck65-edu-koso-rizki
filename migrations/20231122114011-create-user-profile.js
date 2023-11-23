@@ -9,17 +9,31 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      age: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       parentName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       benefactor: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      gender: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       phone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       },
       idCardNumber: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       },
       createdAt: {
         allowNull: false,

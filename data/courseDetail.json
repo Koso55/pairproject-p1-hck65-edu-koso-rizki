@@ -1,50 +1,37 @@
 [
-	{
-		"id" : 1,
-		"name" : "How to make a simple calculator",
-		"linkCourse" : "https:\/\/www.youtube.com\/watch?v=cGgLHJGyS34",
-		"CourseId" : 1,
-		"createdAt" : "2023-11-22T13:05:46.224Z",
-		"updatedAt" : "2023-11-22T13:05:46.224Z"
-	},
-	{
-		"id" : 2,
-		"name" : "How to make a simple calendar",
-		"linkCourse" : "https:\/\/www.youtube.com\/watch?v=v-y3B91Fhiw",
-		"CourseId" : 1,
-		"createdAt" : "2023-11-22T13:05:46.224Z",
-		"updatedAt" : "2023-11-22T13:05:46.224Z"
-	},
-	{
-		"id" : 3,
-		"name" : "How to make a simple todo list",
-		"linkCourse" : "https:\/\/www.youtube.com\/watch?v=MkESyVB4oUw",
-		"CourseId" : 1,
-		"createdAt" : "2023-11-22T13:05:46.224Z",
-		"updatedAt" : "2023-11-22T13:05:46.224Z"
-	},
-	{
-		"id" : 6,
-		"name" : "Essential knife skills",
-		"linkCourse" : "https:\/\/www.youtube.com\/watch?v=YrHpeEwk_-U",
-		"CourseId" : 2,
-		"createdAt" : "2023-11-22T13:05:46.224Z",
-		"updatedAt" : "2023-11-22T13:05:46.224Z"
-	},
-	{
-		"id" : 4,
-		"name" : "How to cook basic omelette egg",
-		"linkCourse" : "https:\/\/www.youtube.com\/watch?v=-_MpDKnFsSY",
-		"CourseId" : 2,
-		"createdAt" : "2023-11-22T13:05:46.224Z",
-		"updatedAt" : "2023-11-22T13:05:46.224Z"
-	},
-	{
-		"id" : 5,
-		"name" : "How to cook a simple fried rice",
-		"linkCourse" : "https:\/\/www.youtube.com\/watch?v=qH__o17xHls",
-		"CourseId" : 2,
-		"createdAt" : "2023-11-22T13:05:46.224Z",
-		"updatedAt" : "2023-11-22T13:05:46.224Z"
-	}
+    {
+        "name":"Front-End",
+        "linkCourse": "Coming Soon",
+        "CourseId": 1
+    },
+    {
+        "name":"Back-End",
+        "linkCourse":"Coming Soon",
+        "CourseId":1
+    },
+    {
+        "name":"Database Javascript Postgres",
+        "linkCourse":"Coming Soon",
+        "CourseId":1
+    },
+    {
+        "name": "Golang-Back-End",
+        "linkCourse":"Coming Soon",
+        "CourseId":2
+    },
+    {
+        "name":"Golang Database SQL",
+        "linkCourse":"Coming Soon",
+        "CourseId":2
+    },
+    {
+        "name":"Digital Marketing Website",
+        "linkCourse":"Coming Soon",
+        "CourseId":3
+    },
+    {
+        "name":"Desain Graphics Marketing",
+        "linkCourse":"Coming Soon",
+        "CourseId":3
+    }
 ]
