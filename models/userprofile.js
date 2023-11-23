@@ -64,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate(instance, options) {
         if (!instance.benefactor) {
-          instance.benefactor = "no benefactor"
+          instance.benefactor = "self"
         }
       }
     },

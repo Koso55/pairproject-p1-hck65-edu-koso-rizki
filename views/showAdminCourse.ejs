@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>List Seluruh Course</h1>
+
+    <a href="/admin/course/add">Add</a>
+    <table border="1">
+        <thead>
+            <th>No</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>See Detail</th>
+        </thead>
+        <tbody>
+
+            <% data.forEach((element,index)=> { %>
+                <tr>
+                    <td>
+                        <%= index+1 %>
+                    </td>
+                    <td>
+                        <%= element.name %>
+                    </td>
+                    <td>
+                        <%= element.description %>
+                    </td>
+                    <td>
+                        See Detail
+                    </td>
+                </tr>
+                <%}); %>
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>
