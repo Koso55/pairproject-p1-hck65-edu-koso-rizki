@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Course Detail</h1>
+    <h2>
+        <%=data.name%>
+    </h2>
+
+    <a href="/admin/course/<%=data.id%>/detail/add">Add Data</a>
+
+    <table border="1">
+        <thead>
+            <th>No</th>
+            <th>Name</th>
+            <th>Link Course</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            <% data.CourseDetails.forEach((element, index)=> { %>
+                <tr>
+                    <td>
+                        <%= index +1 %>
+                    </td>
+                    <td>
+                        <%=element.name %>
+                    </td>
+                    <td>
+                        <%=element.linkCourse %>
+                    </td>
+                    <td>
+                        <a href="/admin/course/<%=data.id %>/detail/<%=element.id%>/delete">delete</a>
+                    </td>
+                    <%}); %>
+                </tr>
+        </tbody>
+
+    </table>
+</body>
+
+</html>

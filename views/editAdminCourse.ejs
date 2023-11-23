@@ -8,16 +8,16 @@
 </head>
 
 <body>
-    <h1>Menambah Kursus</h1>
-    <form action="/admin/course/add" method="post">
+    <h1>Edit Admin Course</h1>
+    <form action="/admin/course/<%=data.id%>/edit" method="post">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
+        <input type="text" id="name" name="name" value="<%=data.name  %>"><br>
+
         <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description"><br><br>
+        <input type="text" id="description" name="description" value="<%=data.description  %>"><br><br>
 
         <input type="submit" value="Submit">
     </form>
-
 </body>
 
 </html>

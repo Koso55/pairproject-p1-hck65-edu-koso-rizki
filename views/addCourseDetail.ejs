@@ -8,16 +8,16 @@
 </head>
 
 <body>
-    <h1>Menambah Kursus</h1>
-    <form action="/admin/course/add" method="post">
+    <h1>Add Detail Course</h1>
+
+
+    <form action="/admin/course/<%=data.id%>/detail/add" method="post">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br>
-        <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description"><br><br>
-
+        <label for="linkCourse">Link Course:</label><br>
+        <input type="text" id="linkCourse" name="linkCourse"><br><br>
         <input type="submit" value="Submit">
     </form>
-
 </body>
 
 </html>
