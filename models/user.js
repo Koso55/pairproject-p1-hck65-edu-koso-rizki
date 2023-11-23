@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     static async registerPost(data) {
       try {
         const { userName, password, confirmPassword, email } = data
-        if(password !== confirmPassword){
-          throw{
-            type:"passwordMismatch",
-            message:"password do not match"
+        if (password !== confirmPassword) {
+          throw {
+            type: "passwordMismatch",
+            message: "password do not match"
           }
         }
         await User.create({ userName: userName, password: password, email: email })
@@ -38,10 +38,43 @@ module.exports = (sequelize, DataTypes) => {
 
   }
   User.init({
-    userName: DataTypes.STRING,
-    password: DataTypes.STRING,
-    email: DataTypes.STRING,
-    role: DataTypes.STRING
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "username is required"
+        },
+        notEmpty:{
+          msg:"username is required"
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "password is required"
+        },
+        notEmpty:{
+          msg:"password is required"
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "email is required"
+        },
+        notEmpty:{
+          msg:"email is required"
+        }
+      }
+    },
+    role: DataTypes.STRING //handled in hooks
   }, {
     hooks: {
       beforeCreate(instance, options) {
