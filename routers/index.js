@@ -22,6 +22,7 @@ router.use((req, res, next) => {
         next()
     }
 })
+
 router.get('/logout', Controller.getLogout)
 
 

@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
             id: newUserId
           }
         })
-        console.log(userId.id)
+        // console.log(userId.id)
         return userId.id
       } catch (error) {
         throw error
@@ -63,6 +63,58 @@ module.exports = (sequelize, DataTypes) => {
             message: "Invalid username or password"
           }
         }
+      } catch (error) {
+        throw error
+      }
+    }
+
+
+    static async findUserHasCourse(userId, UserHasCourse, Course) {
+      try {
+        let user = await User.findOne({
+          where: { id: userId },
+          include: {
+            model: Course,
+            through: {
+              attributes: ["user_id"]
+            }
+          }
+        })
+        // console.log(user.dataValues.Courses[1].id)
+        return user
+      } catch (error) {
+        throw error
+      }
+    }
+
+    static async findUserHasCourse(userId, UserHasCourse, Course) {
+      try {
+        let user = await User.findOne({
+          where: { id: userId },
+          include: {
+            model: Course,
+            through: {
+              attributes: ["user_id"]
+            }
+          }
+        })
+        // console.log(user.dataValues.Courses[1].id)
+        return user
+      } catch (error) {
+        throw error
+      }
+    }
+
+    static async findUserProfile(userId, UserProfile){
+      try {
+        let instance = await User.findOne({
+          where: { id: userId },
+          include: {
+            model: UserProfile
+          }
+        })
+        // console.log(instance.UserProfile.age)
+        return instance
       } catch (error) {
         throw error
       }

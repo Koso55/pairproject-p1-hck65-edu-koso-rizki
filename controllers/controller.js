@@ -1,4 +1,5 @@
-const { User, Course, CourseDetail, UserProfile } = require("../models/index.js")
+const course = require("../models/course.js");
+const { User, Course, UserHasCourse, CourseDetail, UserProfile } = require("../models/index.js")
 var bcrypt = require('bcryptjs');
 
 
@@ -118,9 +119,9 @@ class Controller {
     static getLogout(req, res) {//PENTING
         try {
             req.session.destroy(function (err) {
-                if(err){
+                if (err) {
                     console.log(err)
-                }else {
+                } else {
                     res.redirect("/")
                 }
             })
@@ -176,21 +177,62 @@ class Controller {
         }
     }
 
-
-
-
-
-
-
     //USER
     static async redirToUserCourse(req, res) {
         try {
-            res.send("PAGE NOT FOUND, REDIR TO USER COURSE")
+            // console.log(req.session.userId)
+            res.redirect(`user/${req.session.userId}/course`)
+            // res.send("PAGE NOT FOUND, REDIR TO USER COURSE")
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    static async showCoursePageUser(req, res) {
+        try {
+            let userId = req.session.userId
+            let instance = await Course.showCoursePageUser()
+            let userHasCourses = await User.findUserHasCourse(userId, UserHasCourse, Course)
+            res.render("coursePageUser", { userId, instance, userHasCourses })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    static async enrollCourseUser(req, res) {
+        try {
+            const { id, courseId } = req.params
+            // console.log(id, courseId)
+            await UserHasCourse.enrollCourseUser(courseId, id)
+            res.redirect("/user")
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    static async showMyCourse(req, res) {
+        try {
+            let userId = req.session.userId
+            let instance = await Course.showCoursePageUser()
+            let myCourses = await User.findUserHasCourse(userId, UserHasCourse, Course)
+            res.render("myCourse", { userId, instance, myCourses })
         } catch (error) {
             res.send(error)
         }
     }
 
+
+
+
+
+    static async showUserProfile(req, res) {
+        try {
+            let userId = req.session.userId
+            let findUserCourse = await User.findUserHasCourse(userId, UserHasCourse, Course)
+            let findUserProfiles = await User.findUserProfile(userId, UserProfile)
+            // console.log(findUserProfiles.UserProfile.age)
+            res.render("userProfile", { userId, findUserCourse, findUserProfiles })
+        } catch (error) {
+            res.send(error)
+        }
+    }
 }
 
 

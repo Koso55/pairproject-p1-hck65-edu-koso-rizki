@@ -14,7 +14,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "nodemon": "^3.0.1",
-    "pdfjs": "^2.5.2",
+    "pdfjs-dist": "^4.0.189",
     "pg": "^8.11.3",
     "sequelize": "^6.35.1",
     "sequelize-cli": "^6.6.2"

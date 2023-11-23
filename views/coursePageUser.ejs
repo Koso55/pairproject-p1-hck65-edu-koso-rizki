@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Available Courses - Belajar Apa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .course-card {
+            margin-bottom: 20px;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/user">Belajar Apa?</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/user">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/<%= userId %>/course/mycourse">My Course</a>
+                <!-- GANTI HREF TIAP PERGI -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/<%= userId %>/profile">My profile</a>
+                <!-- GANTI HREF TIAP PERGI -->
+              </li>
+            <form class="d-flex" role="search" action="/user/<%= userId %>/course">
+              <input class="form-control me-2" type="search" placeholder="Search" name="search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+          </div>
+        </div>
+      </nav>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Available Courses</h2>
+        <div class="row">
+
+            <% instance.forEach(ely => { %>
+                <% let found = false %>
+                <% userHasCourses.Courses.forEach(elx=>{%>
+                    <% if(ely.id === elx.id) {%>
+                        <% found = true %>
+                    <%}%>
+                <%}) %>
+                <% if(!found) { %>
+                    <%# ely.id %>
+                    <div class="col-md-3">
+                        <div class="card course-card">
+                            <img src="https://picsum.photos/200" class="card-img-top" alt="Course 1">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= ely.name %></h5>
+                                <p class="card-text"><%= ely.description %></p>
+                                <form action="/user/<%= userId %>/course/<%= ely.id %>/enroll" method="post">
+                                        <button class="btn btn-success" type="submit">Enroll</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+            <%}); %>
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>

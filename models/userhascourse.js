@@ -12,10 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    static async enrollCourseUser(courseId, id) {
+      try {
+        await UserHasCourse.create({ user_id: id, course_id: courseId });
+      } catch (error) {
+        throw error
+      }
+    }
   }
   UserHasCourse.init({
     user_id: DataTypes.INTEGER,
-    course_id:DataTypes.INTEGER
+    course_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'UserHasCourse',
