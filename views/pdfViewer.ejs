@@ -147,6 +147,33 @@
 		integrity="sha512-U5C477Z8VvmbYAoV4HDq17tf4wG6HXPC6/KM9+0/wEXQQ13gmKY2Zb0Z2vu0VNUWch4GlJ+Tl/dfoLOH4i2msw=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<title>PDF Viewer</title>
+	<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/user">Belajar Apa?</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/user">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/<%= userId %>/course/mycourse">My Course</a>
+                <!-- GANTI HREF TIAP PERGI -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/<%= userId %>/profile">My profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/<%= userId %>/course/mycourse/<%= courseId %>/viewer">See PDF Viewer</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+          </div>
+        </div>
+      </nav>
 </head>
 
 <body>
@@ -184,11 +211,6 @@
 								<button id="previous"><i class="fas fa-arrow-alt-circle-left"></i></button>
 								<span id="current_page">0 of 0</span>
 								<button id="next"><i class="fas fa-arrow-alt-circle-right"></i></button>
-							</li>
-
-							<li>
-								<input type="range" id="zoom" name="cowbell" min="100" max="300" value="100" step="50"
-									disabled>
 							</li>
 						</ul>
 					</footer>

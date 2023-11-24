@@ -1,4 +1,3 @@
-const course = require("../models/course.js");
 const { User, Course, UserHasCourse, CourseDetail, UserProfile } = require("../models/index.js")
 const bcrypt = require('bcryptjs');
 const { Op } = require("sequelize");
@@ -363,7 +362,7 @@ class Controller {
             let userId = req.session.userId
             let courseId = req.params.courseId
             let instance = await CourseDetail.showCourseDetails(+courseId)
-            res.render("pdfViewer",{instance})
+            res.render("pdfViewer",{instance, userId, courseId})
         } catch (error) {
             res.send(error)
         }
